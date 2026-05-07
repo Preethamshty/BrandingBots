@@ -15203,7 +15203,8 @@ body.tw-magic-cursor #magic-cursor {
 }
 
 .team-five-wrapper .tw-mt-8 {
-    min-height: 95px;
+    margin-top: 18px;
+    min-height: auto;
 }
 
 /* Optional: better responsive sizing */
@@ -15215,7 +15216,7 @@ body.tw-magic-cursor #magic-cursor {
 
 @media (max-width: 767px) {
     .team-five-thumb {
-        height: 320px;
+        height: 260px;
     }
 }
 
@@ -15540,29 +15541,11 @@ body.tw-magic-cursor #magic-cursor {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .maquee-icon img {
     width: 50px;
     height: 50px;
     object-fit: contain;
 }
-
-
-
-
 
 
 
@@ -16098,3 +16081,808 @@ li:hover > .mega-menu {
         font-size: 48px !important;
     }
 }
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   MOBILE ONLY PORTFOLIO TEXT OVERLAP FIX
+   Keeps desktop unchanged
+
+========================================= */
+
+@media (max-width: 767px) {
+
+    /* Heading wrapper */
+    .portfolio-heading-wrap,
+    .portfolio-area .position-relative.z-1.tw-mb-2 {
+        padding: 0 12px !important;
+        margin-bottom: 28px !important;
+        position: relative !important;
+    }
+
+    /* PORTFOLIO */
+    .portfolio-top-subtitle {
+        display: block !important;
+        font-size: 48px !important;
+        line-height: 1 !important;
+        text-align: left !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+        position: relative !important;
+        left: 0 !important;
+    }
+
+    /* PROJECTS */
+    .portfolio-top-title {
+        display: block !important;
+        font-size: 64px !important;
+        line-height: 0.92 !important;
+        text-align: right !important;
+        white-space: nowrap !important;
+        margin-top: 6px !important;   /* pushes PROJECTS downward */
+        position: relative !important;
+        left: 4% !important;
+    }
+
+    /* Arrow */
+    .portfolio-shape {
+        top: 58% !important;
+        left: 22% !important;
+    }
+
+    .portfolio-shape-arrow {
+        width: 48px !important;
+    }
+}
+
+/* SMALLER MOBILE */
+@media (max-width: 480px) {
+
+    .portfolio-top-subtitle {
+        font-size: 40px !important;
+    }
+
+    .portfolio-top-title {
+        font-size: 54px !important;
+        margin-top: 8px !important;
+        left: 5% !important;
+    }
+
+    .portfolio-shape {
+        top: 60% !important;
+        left: 24% !important;
+    }
+
+    .portfolio-shape-arrow {
+        width: 40px !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   PROJECTS SHIFT RIGHT (DESKTOP + MOBILE)
+
+========================================= */
+
+/* DESKTOP + ALL */
+.portfolio-top-title {
+    position: relative !important;
+    left: 4% !important;   /* moves PROJECTS slightly right */
+}
+
+/* LARGE DESKTOP */
+@media (min-width: 1400px) {
+    .portfolio-top-title {
+        left: 5% !important;
+    }
+}
+
+/* LAPTOP / TABLET */
+@media (max-width: 1199px) {
+    .portfolio-top-title {
+        left: 3.5% !important;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+    .portfolio-top-title {
+        left: 6% !important;
+    }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+    .portfolio-top-title {
+        left: 7% !important;
+    }
+}
+
+
+
+
+
+
+
+
+/* =========================================
+   MOBILE ONLY - CENTER PORTFOLIO + PROJECTS
+   
+========================================= */
+
+@media only screen and (max-width: 767px) {
+
+    /* Heading wrapper */
+    .portfolio-area .position-relative.z-1.tw-mb-2,
+    .portfolio-heading-wrap {
+        text-align: center !important;
+        padding: 0 !important;
+    }
+
+    /* PORTFOLIO */
+    .portfolio-area .portfolio-top-subtitle {
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        left: 0 !important;
+        display: block !important;
+    }
+
+    /* PROJECTS */
+    .portfolio-area .portfolio-top-title {
+        width: 100% !important;
+        text-align: center !important;
+        margin: 6px auto 0 auto !important;
+        margin-left: 0 !important;
+        transform: none !important;
+        display: block !important;
+    }
+
+    /* Arrow center */
+    .portfolio-area .portfolio-shape {
+        left: 50% !important;
+        top: 58% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+}
+
+/* SMALL MOBILE */
+@media only screen and (max-width: 480px) {
+
+    .portfolio-area .portfolio-top-title {
+        margin-top: 8px !important;
+    }
+
+}
+
+
+
+/* =========================================
+   MOBILE ONLY - MOVE PORTFOLIO SLIGHTLY LEFT
+   Keeps PROJECTS centered
+ 
+========================================= */
+
+@media only screen and (max-width: 767px) {
+
+    .portfolio-area .portfolio-top-subtitle {
+        position: relative !important;
+        left: -10px !important;   /* move PORTFOLIO slightly left */
+    }
+
+}
+
+/* SMALL MOBILE */
+@media only screen and (max-width: 480px) {
+
+    .portfolio-area .portfolio-top-subtitle {
+        left: -6px !important;
+    }
+
+}
+
+
+
+
+
+
+
+/* =========================================
+   MOBILE ONLY - CHANGE GREEN CITY + NISARGALAYA COVER IMAGES
+   Desktop remains unchanged
+  
+========================================= */
+
+@media only screen and (max-width: 767px) {
+
+    /* GREEN CITY MOBILE IMAGE */
+    .portfolio-panel--green-city {
+        background-image: url("assets/images/thumbs/green-city-mobile.jpg") !important;
+        background-position: center center !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+    }
+
+    /* NISARGALAYA MOBILE IMAGE */
+    .portfolio-panel--nisargalaya {
+        background-image: url("assets/images/thumbs/nisargalaya-mobile.jpg") !important;
+        background-position: center center !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE ONLY - FIX BLANK PORTFOLIO IMAGES
+   For JS data-background-image templates
+   
+========================================= */
+
+@media only screen and (max-width: 767px) {
+
+    /* GREEN CITY */
+    .portfolio-panel--green-city {
+        background: url("../images/thumbs/green-city-mobile.jpg") center center / cover no-repeat !important;
+    }
+
+    /* NISARGALAYA */
+    .portfolio-panel--nisargalaya {
+        background: url("../images/thumbs/nisargalaya-mobile.jpg") center center / cover no-repeat !important;
+    }
+
+}
+
+
+
+
+
+
+
+
+/* =========================================
+   HIDE BLOG SECTION - ALL PAGES + ALL DEVICES
+   Desktop + Mobile + Tablet
+   
+========================================= */
+
+/* Hide full blog section everywhere */
+.blog-area,
+.blog-section,
+.blog,
+.blog-page,
+.blog-wrapper,
+.latest-blog-area {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Hide blog menu links in navbar/footer */
+a[href*="blog"],
+a[href*="blog.html"],
+li.menu-item-has-children a[href*="blog"] {
+    display: none !important;
+}
+
+/* Hide blog breadcrumb/page title sections */
+.page-title-blog,
+.breadcrumb-blog,
+.blog-breadcrumb {
+    display: none !important;
+}
+
+
+
+
+/* =====================================================
+   FINAL FIX - TARGETS YOUR EXACT BANNER MOBILE SECTION
+   (Current issue: CSS is affecting banner instead of portfolio)
+   Makes ONLY portfolio section large like template
+   
+===================================================== */
+
+@media only screen and (max-width: 767px) {
+
+    /* ONLY PORTFOLIO SECTION */
+    section.portfolio-area .portfolio-top-subtitle {
+        font-size: 58px !important;
+        font-weight: 900 !important;
+        line-height: 0.9 !important;
+        letter-spacing: -2px !important;
+        white-space: nowrap !important;
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        position: relative !important;
+        left: -8px !important;
+    }
+
+    section.portfolio-area .portfolio-top-title {
+        font-size: 86px !important;
+        font-weight: 900 !important;
+        line-height: 0.82 !important;
+        letter-spacing: -3px !important;
+        white-space: nowrap !important;
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        position: relative !important;
+    }
+
+    /* PORTFOLIO WRAPPER */
+    section.portfolio-area .position-relative.z-1.tw-mb-2 {
+        text-align: center !important;
+        padding: 0 10px !important;
+        margin-bottom: 24px !important;
+    }
+
+    /* ARROW */
+    section.portfolio-area .portfolio-shape {
+        left: 50% !important;
+        top: 58% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    section.portfolio-area .portfolio-shape-arrow {
+        width: 58px !important;
+    }
+}
+
+/* SMALL MOBILE */
+@media only screen and (max-width: 480px) {
+
+    section.portfolio-area .portfolio-top-subtitle {
+        font-size: 52px !important;
+        left: -6px !important;
+    }
+
+    section.portfolio-area .portfolio-top-title {
+        font-size: 76px !important;
+    }
+
+    section.portfolio-area .portfolio-shape-arrow {
+        width: 50px !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   MOBILE PORTFOLIO LETTER SPACING FIX
+   Adds spacing between letters + keeps big size
+   
+========================================= */
+
+@media only screen and (max-width: 767px) {
+
+    /* PORTFOLIO */
+    section.portfolio-area .portfolio-top-subtitle {
+        font-size: 58px !important;
+        font-weight: 900 !important;
+        line-height: 0.95 !important;
+        letter-spacing: 2px !important;   /* more spacing */
+        word-spacing: 4px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        left: -4px !important;
+    }
+
+    /* PROJECTS */
+    section.portfolio-area .portfolio-top-title {
+        font-size: 86px !important;
+        font-weight: 900 !important;
+        line-height: 0.86 !important;
+        letter-spacing: 3px !important;   /* more spacing */
+        word-spacing: 6px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+}
+
+/* SMALL MOBILE */
+@media only screen and (max-width: 480px) {
+
+    section.portfolio-area .portfolio-top-subtitle {
+        font-size: 52px !important;
+        letter-spacing: 1.5px !important;
+    }
+
+    section.portfolio-area .portfolio-top-title {
+        font-size: 76px !important;
+        letter-spacing: 2px !important;
+    }
+
+}
+
+
+
+
+
+/* =====================================================
+   MOBILE PORTFOLIO TEXT POSITION FIX
+   PORTFOLIO = top-left
+   PROJECTS = bottom-right
+   Like your marked boxes
+   
+===================================================== */
+
+@media only screen and (max-width: 767px) {
+
+    /* WRAPPER */
+    section.portfolio-area .position-relative.z-1.tw-mb-2 {
+        position: relative !important;
+        height: 170px !important;
+        width: 100% !important;
+        margin-bottom: 20px !important;
+        padding: 0 !important;
+    }
+
+    /* PORTFOLIO (TOP LEFT) */
+    section.portfolio-area .portfolio-top-subtitle {
+        position: absolute !important;
+        top: 18px !important;
+        left: 28px !important;
+        font-size: 56px !important;
+        font-weight: 900 !important;
+        line-height: 1 !important;
+        letter-spacing: 2px !important;
+        text-align: left !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+        z-index: 2 !important;
+    }
+
+    /* PROJECTS (BOTTOM RIGHT) */
+    section.portfolio-area .portfolio-top-title {
+        position: absolute !important;
+        top: 72px !important;
+        right: 18px !important;
+        left: auto !important;
+        font-size: 74px !important;
+        font-weight: 900 !important;
+        line-height: 0.9 !important;
+        letter-spacing: 3px !important;
+        text-align: right !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+        z-index: 1 !important;
+    }
+
+    /* ARROW CENTER */
+    section.portfolio-area .portfolio-shape {
+        position: absolute !important;
+        left: 50% !important;
+        top: 56% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 3 !important;
+    }
+
+    section.portfolio-area .portfolio-shape-arrow {
+        width: 52px !important;
+    }
+}
+
+/* SMALL MOBILE */
+@media only screen and (max-width: 480px) {
+
+    section.portfolio-area .position-relative.z-1.tw-mb-2 {
+        height: 150px !important;
+    }
+
+    section.portfolio-area .portfolio-top-subtitle {
+        font-size: 48px !important;
+        left: 20px !important;
+        top: 16px !important;
+    }
+
+    section.portfolio-area .portfolio-top-title {
+        font-size: 64px !important;
+        top: 66px !important;
+        right: 14px !important;
+    }
+
+    section.portfolio-area .portfolio-shape-arrow {
+        width: 46px !important;
+    }
+}
+
+
+/* =====================================================
+   MOBILE PORTFOLIO CLEAN TYPOGRAPHY FIX
+   Keeps position SAME
+   Removes compressed look
+   Makes text bold, stretched, clean like template
+   
+===================================================== */
+
+@media only screen and (max-width: 767px) {
+
+    /* PORTFOLIO */
+    section.portfolio-area .portfolio-top-subtitle {
+        position: absolute !important;
+        top: 18px !important;
+        left: 28px !important;
+
+        font-size: 58px !important;
+        font-weight: 900 !important;
+        font-family: inherit !important;
+
+        line-height: 1.02 !important;
+        letter-spacing: -1px !important;   /* remove bubble spacing */
+        word-spacing: 0 !important;
+
+        transform: scaleX(0.88) !important; /* stretch vertically, reduce fatness */
+        transform-origin: left center !important;
+
+        text-align: left !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+    }
+
+    /* PROJECTS */
+    section.portfolio-area .portfolio-top-title {
+        position: absolute !important;
+        top: 72px !important;
+        right: 18px !important;
+
+        font-size: 78px !important;
+        font-weight: 900 !important;
+        font-family: inherit !important;
+
+        line-height: 0.92 !important;
+        letter-spacing: -2px !important;
+        word-spacing: 0 !important;
+
+        transform: scaleX(0.90) !important;
+        transform-origin: right center !important;
+
+        text-align: right !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+    }
+
+    /* ARROW */
+    section.portfolio-area .portfolio-shape-arrow {
+        width: 52px !important;
+    }
+}
+
+/* SMALL MOBILE */
+@media only screen and (max-width: 480px) {
+
+    section.portfolio-area .portfolio-top-subtitle {
+        font-size: 50px !important;
+        transform: scaleX(0.88) !important;
+    }
+
+    section.portfolio-area .portfolio-top-title {
+        font-size: 68px !important;
+        transform: scaleX(0.90) !important;
+    }
+}
+
+
+/* =====================================================
+   FORCE EXACT PORTFOLIO / PROJECTS FONT FIX
+   Your current CSS is being overridden by stronger styles.
+   This directly targets the REAL heading classes.
+   
+===================================================== */
+
+@media only screen and (max-width: 767px) {
+
+    /* FORCE WRAPPER */
+    section.portfolio-area .position-relative.z-1.tw-mb-2 {
+        position: relative !important;
+        display: block !important;
+        height: 185px !important;
+        margin-bottom: 28px !important;
+        overflow: visible !important;
+    }
+
+    /* PORTFOLIO */
+    section.portfolio-area h3.portfolio-top-subtitle,
+    section.portfolio-area .portfolio-top-subtitle.tw-text-47 {
+        position: absolute !important;
+        top: 18px !important;
+        left: 14px !important;
+
+        display: block !important;
+        width: auto !important;
+
+        font-size: 72px !important;
+        font-weight: 900 !important;
+        line-height: 0.9 !important;
+
+        letter-spacing: -3px !important;
+        word-spacing: 0 !important;
+
+        font-family: var(--heading-font) !important;
+
+        transform: scaleY(1.18) !important;
+        transform-origin: left top !important;
+
+        text-align: left !important;
+        white-space: nowrap !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* PROJECTS */
+    section.portfolio-area h2.portfolio-top-title,
+    section.portfolio-area .portfolio-top-title.tw-text-83 {
+        position: absolute !important;
+        top: 82px !important;
+        right: 10px !important;
+        left: auto !important;
+
+        display: block !important;
+        width: auto !important;
+
+        font-size: 96px !important;
+        font-weight: 900 !important;
+        line-height: 0.82 !important;
+
+        letter-spacing: -4px !important;
+        word-spacing: 0 !important;
+
+        font-family: var(--heading-font) !important;
+
+        transform: scaleY(1.18) !important;
+        transform-origin: right top !important;
+
+        text-align: right !important;
+        white-space: nowrap !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* ARROW */
+    section.portfolio-area .portfolio-shape {
+        position: absolute !important;
+        left: 50% !important;
+        top: 58% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 3 !important;
+    }
+
+    section.portfolio-area .portfolio-shape-arrow {
+        width: 58px !important;
+    }
+}
+
+
+
+/* =========================================
+   MOBILE PORTFOLIO LETTER SPACING ONLY
+   Keep current font + size
+   Adds spacing between letters
+   
+========================================= */
+
+@media only screen and (max-width: 767px) {
+
+    /* PORTFOLIO */
+    section.portfolio-area h3.portfolio-top-subtitle,
+    section.portfolio-area .portfolio-top-subtitle.tw-text-47 {
+        letter-spacing: 2px !important;   /* spacing between letters */
+        word-spacing: 2px !important;
+    }
+
+    /* PROJECTS */
+    section.portfolio-area h2.portfolio-top-title,
+    section.portfolio-area .portfolio-top-title.tw-text-83 {
+        letter-spacing: 3px !important;   /* slightly more for bigger text */
+        word-spacing: 3px !important;
+    }
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+   ALTERNATING TEAM CARD BACKGROUNDS
+===================================== */
+
+/* Default card styling */
+.team-five-thumb {
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+/* Team images */
+.team-five-thumb img {
+    width: 100%;
+    display: block;
+    border-radius: 14px;
+}
+
+/* ODD cards = BLUE */
+.col-xl-4:nth-child(odd) .team-five-thumb {
+    background: #2F6FA5;
+}
+
+/* EVEN cards = WHITE */
+.col-xl-4:nth-child(even) .team-five-thumb {
+    background: #f3f4f6;
+}
+
+/* Fix spacing below image */
+.team-five-wrapper .tw-mt-8 {
+    margin-top: 14px !important;
+    min-height: auto !important;
+}
+
+/* Name spacing */
+.team-five-wrapper h4 {
+    margin-bottom: 4px !important;
+}
+
+/* Role text */
+.team-five-wrapper p {
+    color: #bdbdbd !important;
+    line-height: 1.5;
+}
+
+
+
+
+
