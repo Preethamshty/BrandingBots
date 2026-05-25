@@ -178,6 +178,14 @@
     display: block;
 }
 
+/* About section tagline — reduce on mobile */
+@media (max-width: 767px) {
+    .about-paragraph {
+        font-size: 1.5rem !important;
+        line-height: 1.5 !important;
+    }
+}
+
 /* Mobile hero text (CREATIVE AGENCY) placement */
 @media (max-width: 767px) {
     .banner-area {
