@@ -106,6 +106,22 @@
                     tryHidePreloader();
                 }, { once: true });
 
+                // Hide immediately if video fails to load (network error, missing file, codec).
+                preloaderVideo.addEventListener("error", () => {
+                    videoCompleted = true;
+                    tryHidePreloader();
+                }, { once: true });
+
+                // Hide if video stalls for more than 3 s (slow connection, buffering stuck).
+                preloaderVideo.addEventListener("stalled", () => {
+                    setTimeout(() => {
+                        if (!videoCompleted) {
+                            videoCompleted = true;
+                            tryHidePreloader();
+                        }
+                    }, 3000);
+                }, { once: true });
+
                 const playPromise = preloaderVideo.play();
                 if (playPromise && typeof playPromise.catch === "function") {
                     playPromise.catch(() => {
@@ -115,13 +131,13 @@
                     });
                 }
 
-                // Safety fallback in case ended doesn't fire on specific devices.
+                // Hard cap: never block the page for more than 6 s regardless of video state.
                 setTimeout(() => {
                     if (!videoCompleted) {
                         videoCompleted = true;
                         tryHidePreloader();
                     }
-                }, 15000);
+                }, 6000);
             }
 
             tryHidePreloader();
