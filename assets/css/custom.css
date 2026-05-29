@@ -217,6 +217,19 @@ html {
     }
 }
 
+/* Desktop hero text — scale down from template's 333px span to fit "WE BUILD / BRANDS" layout */
+@media (min-width: 768px) {
+    .banner-title {
+        font-size: clamp(80px, 8vw, 120px) !important;
+        line-height: 0.9 !important;
+    }
+
+    .banner-title span {
+        font-size: clamp(130px, 14vw, 200px) !important;
+        line-height: 1 !important;
+    }
+}
+
 /* Mobile hero text (CREATIVE AGENCY) placement */
 @media (max-width: 767px) {
     .banner-area {
