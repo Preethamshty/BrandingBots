@@ -219,11 +219,17 @@ html {
 
 /* Desktop hero text — scale down from template's 333px span to fit "WE BUILD / BRANDS" layout */
 @media (min-width: 768px) {
+    /* Make wrapper non-positioned so .banner-content positions relative to .banner-area section */
+    .banner-wrapper {
+        position: static !important;
+    }
+
+    /* top/left are now % of the full banner section (starts at y=0, width=100vw) */
     .banner-content {
-        inset-block-end: auto !important;
-        inset-block-start: 28% !important;
-        inset-inline-end: auto !important;
-        inset-inline-start: 38% !important;
+        top: 32% !important;
+        bottom: auto !important;
+        left: 36% !important;
+        right: auto !important;
     }
 
     .banner-title {
