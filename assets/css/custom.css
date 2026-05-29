@@ -222,6 +222,8 @@ html {
     .banner-content {
         inset-block-end: auto !important;
         inset-block-start: 10% !important;
+        inset-inline-end: auto !important;
+        inset-inline-start: 5% !important;
     }
 
     .banner-title {
