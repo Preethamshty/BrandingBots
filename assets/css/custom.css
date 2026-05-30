@@ -397,6 +397,24 @@ html {
         display: none !important;
     }
 
+    /* Portfolio heading — fix overflow caused by template's left:4-5% + text-align:right shift */
+    .portfolio-area .portfolio-top-subtitle {
+        font-size: 36px !important;
+        text-align: left !important;
+        white-space: nowrap !important;
+        position: static !important;
+        left: 0 !important;
+    }
+
+    .portfolio-area .portfolio-top-title {
+        font-size: 52px !important;
+        text-align: left !important;
+        position: static !important;
+        left: 0 !important;
+        margin-top: 4px !important;
+        line-height: 1 !important;
+    }
+
     .portfolio-area {
         padding-block-end: 20px !important;
     }
