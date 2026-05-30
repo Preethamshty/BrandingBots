@@ -489,4 +489,11 @@ html {
     }
 }
 
+/* Portfolio heading — separate desktop/mobile blocks */
+.bb-pf-mobile { display: none !important; }
+
+@media (max-width: 767px) {
+    .bb-pf-desktop { display: none !important; }
+    .bb-pf-mobile  { display: block !important; }
+}
 
