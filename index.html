@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="assets/css/aos.css">
     <!-- Main css -->
     <link rel="stylesheet" href="assets/css/main.css?v=20260415-5">
-    <link rel="stylesheet" href="assets/css/custom.css?v=20260530-4">
+    <link rel="stylesheet" href="assets/css/custom.css?v=20260530-5">
 </head>
 
 <body class="home-one-bg tw-magic-cursor">
@@ -572,12 +572,18 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-11">
-                <div class="position-relative z-1 tw-mb-2">
+                <!-- Desktop heading (md and up) -->
+                <div class="position-relative z-1 tw-mb-2 d-none d-md-block">
                     <h3 class="portfolio-top-subtitle tw-text-47 mb-0 lh-1 text-uppercase">portfolio </h3>
                     <h2 class="portfolio-top-title tw-text-83 text-main-600 mb-0 text-uppercase">PROJECTS</h2>
                     <div class="portfolio-shape position-absolute z-1">
                         <span><img class="portfolio-shape-arrow" src="assets/images/shapes/portfolio-arrow.png" alt="arrow"></span>
                     </div>
+                </div>
+                <!-- Mobile heading (below md) — no template classes that carry -65px margin -->
+                <div class="tw-mb-2 d-block d-md-none" style="margin:0;padding:0;">
+                    <h3 style="font-family:var(--heading-font);font-size:36px;line-height:1;text-transform:uppercase;margin:0;padding:0;color:#fff;">portfolio</h3>
+                    <h2 style="font-family:var(--heading-font);font-size:52px;line-height:1;text-transform:uppercase;margin:8px 0 0 0;padding:0;color:hsl(var(--main));">PROJECTS</h2>
                 </div>
             </div>
         </div>
