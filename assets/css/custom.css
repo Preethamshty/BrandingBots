@@ -490,11 +490,10 @@ html {
 }
 
 /* Portfolio heading — separate desktop/mobile blocks */
-.bb-pf-mobile { display: none !important; }
-
-@media (max-width: 767px) {
-    .bb-pf-desktop { display: none !important; }
-    .bb-pf-mobile  { display: block !important; }
+/* bb-pf-desktop has inline display:none — only show it on desktop */
+@media (min-width: 768px) {
+    .bb-pf-desktop { display: block !important; }
+    .bb-pf-mobile  { display: none !important; }
 }
 
 /* Athletic font */
