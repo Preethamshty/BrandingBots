@@ -497,6 +497,15 @@ html {
     .bb-pf-mobile  { display: block !important; }
 }
 
-/* Poppins on portfolio heading (mobile only) */
+/* Athletic font */
+@font-face {
+    font-family: "Athletic";
+    src: url("../fonts/Athletic.TTF") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Athletic on portfolio heading (mobile only) */
 
 
