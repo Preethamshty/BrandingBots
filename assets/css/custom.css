@@ -477,6 +477,15 @@ html {
 }
 
 /* ============================================================
+   Testimonial section — remove negative overlap margin on desktop
+   ============================================================ */
+@media (min-width: 768px) {
+    .testimonial-slide {
+        margin-block-start: 40px !important;
+    }
+}
+
+/* ============================================================
    Global mobile safeguards — prevent horizontal scroll on any device
    ============================================================ */
 @media (max-width: 767px) {
