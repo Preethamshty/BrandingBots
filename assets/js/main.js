@@ -132,21 +132,24 @@
                 }
 
                 // iOS Safari sometimes resolves play() without actually playing (autoplay blocked
-                // silently). Check 1 s after calling play() — if still paused or not loaded, bail.
+                // silently). Check 1.5 s after calling play() — if still paused, at time 0, or
+                // not loaded enough, bail out immediately.
                 setTimeout(() => {
-                    if (!videoCompleted && (preloaderVideo.paused || preloaderVideo.readyState < 2)) {
+                    if (!videoCompleted && (preloaderVideo.paused || preloaderVideo.readyState < 2 || preloaderVideo.currentTime === 0)) {
                         videoCompleted = true;
-                        tryHidePreloader();
+                        pageLoaded = true;
+                        hidePreloader();
                     }
-                }, 1000);
+                }, 1500);
 
-                // Hard cap: never block the page for more than 6 s regardless of video state.
+                // Hard cap: force-hide after 4 s no matter what — call hidePreloader() directly
+                // so it cannot be blocked by pageLoaded being false (e.g. video download stalling
+                // window "load" event on iOS).
                 setTimeout(() => {
-                    if (!videoCompleted) {
-                        videoCompleted = true;
-                        tryHidePreloader();
-                    }
-                }, 6000);
+                    pageLoaded = true;
+                    videoCompleted = true;
+                    hidePreloader();
+                }, 4000);
             }
 
             tryHidePreloader();
