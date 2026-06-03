@@ -246,12 +246,26 @@ html {
 /* Mobile hero text (CREATIVE AGENCY) placement */
 @media (max-width: 767px) {
     .banner-area {
-        padding-block: 160px 40px !important;
+        padding-block: 160px 170px !important;
     }
 
-    /* Close gap between stacked col-xl-9 (image) and col-xl-3 (text) on mobile */
+    /* Remove Bootstrap vertical gutter between stacked image+description columns */
     .banner-area .row {
-        row-gap: 20px !important;
+        row-gap: 0 !important;
+    }
+
+    /* Force banner image taller on mobile — natural size is only 244px (landscape 707x472)
+       but the design needs ~450px to match the reference layout */
+    .banner-wrapper .position-relative.z-1 {
+        min-height: 450px !important;
+        overflow: hidden !important;
+    }
+
+    .banner-wrapper img {
+        width: 100% !important;
+        height: 450px !important;
+        object-fit: cover !important;
+        object-position: 65% top !important;
     }
 
     .banner-content {
