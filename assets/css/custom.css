@@ -490,14 +490,20 @@ html {
     }
 }
 
-/* Fade-effect Swiper: non-active slides sit stacked at z-index 0,
-   active slide at z-index 1. Overflow guard kept for safety. */
+/* Clip the swiper at its boundary */
 .testimonial-active {
     overflow: hidden !important;
 }
 
 .testimonial-slide {
     overflow: hidden !important;
+}
+
+/* Hide all non-active slide content so off-screen loop clones never bleed
+   into the viewport regardless of GPU compositing layer behaviour. */
+.testimonial-active .swiper-slide:not(.swiper-slide-active) {
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
 /* ============================================================

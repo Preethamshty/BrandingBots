@@ -55,14 +55,10 @@
     // 02. testimonial Js
     var slider = new Swiper('.testimonial-active', {
         slidesPerView: 1,
+        spaceBetween: 30,
         loop: true,
-        speed: 800,
-        effect: 'fade',
-        fadeEffect: { crossFade: true },
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-        },
+        speed: 3500,
+        autoplay: true,
         navigation: {
             nextEl: '.slider-next',
             prevEl: '.slider-prev',
