@@ -486,7 +486,17 @@ html {
 @media (min-width: 768px) {
     .testimonial-slide {
         margin-block-start: 40px !important;
+        overflow: hidden !important;
     }
+}
+
+/* Prevent Swiper loop-clone bleed on all viewports */
+.testimonial-active {
+    overflow: hidden !important;
+}
+
+.testimonial-slide {
+    overflow: hidden !important;
 }
 
 /* Testimonial mobile fixes */
