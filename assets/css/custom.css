@@ -246,7 +246,12 @@ html {
 /* Mobile hero text (CREATIVE AGENCY) placement */
 @media (max-width: 767px) {
     .banner-area {
-        padding-block: 160px 170px !important;
+        padding-block: 160px 40px !important;
+    }
+
+    /* Close gap between stacked col-xl-9 (image) and col-xl-3 (text) on mobile */
+    .banner-area .row {
+        row-gap: 20px !important;
     }
 
     .banner-content {
@@ -282,6 +287,18 @@ html {
     .banner-review-content .counter-item {
         margin-left: 0 !important; /* overrides ms-5 */
         text-align: left !important;
+    }
+
+    /* Restore "50+" badge to its original readable size */
+    .banner-review-content h2 {
+        font-size: 42px !important;
+        line-height: 1 !important;
+        margin-bottom: 4px !important;
+    }
+
+    .banner-review-content p {
+        font-size: 13px !important;
+        line-height: 1.25 !important;
     }
 }
 
