@@ -284,15 +284,15 @@ html {
         text-align: left !important;
     }
 
-    /* Restore "50+" badge to its original readable size */
+    /* 50+ badge sizing */
     .banner-review-content h2 {
-        font-size: 42px !important;
+        font-size: 28px !important;
         line-height: 1 !important;
-        margin-bottom: 4px !important;
+        margin-bottom: 2px !important;
     }
 
     .banner-review-content p {
-        font-size: 13px !important;
+        font-size: 16px !important;
         line-height: 1.25 !important;
     }
 }
