@@ -554,11 +554,28 @@ html {
 @font-face {
     font-family: "AthleticPro";
     src: url("../fonts/Mandarin - Athletic Pro Variable.ttf") format("truetype");
-    font-weight: normal;
+    font-weight: 100 900;
     font-style: normal;
     font-display: swap;
 }
 
-/* Athletic on portfolio heading (mobile only) */
-
-
+/* ============================================================
+   Mobile typography — apply AthleticPro to ALL text & headings.
+   Desktop is untouched. Icon elements (i) are excluded so
+   Phosphor / other icon fonts are not broken.
+   ============================================================ */
+@media (max-width: 767px) {
+    body,
+    h1, h2, h3, h4, h5, h6,
+    p, a, span, li,
+    label, button,
+    input, textarea, select,
+    strong, em, small, blockquote,
+    div, section, header, footer, nav,
+    .section-title, .banner-title, .portfolio-title,
+    .testimonial-section-title, .service-title,
+    [class*="title"], [class*="heading"],
+    [class*="subtitle"], [class*="text"] {
+        font-family: "AthleticPro", sans-serif !important;
+    }
+}
