@@ -246,7 +246,22 @@ html {
 /* Mobile hero text (CREATIVE AGENCY) placement */
 @media (max-width: 767px) {
     .banner-area {
-        padding-block: 160px 170px !important;
+        padding-block: 160px 40px !important;
+    }
+
+    /* Reset desktop negative margin that clips the Explore button via overflow:hidden */
+    .banner-bottom-wrap {
+        margin-block-end: 0 !important;
+        padding-inline: 16px !important;
+    }
+
+    .banner-button {
+        display: block !important;
+        margin-top: 20px !important;
+    }
+
+    .banner-button .theme-btn-main {
+        display: inline-flex !important;
     }
 
     .banner-content {
