@@ -274,7 +274,7 @@ html {
     .banner-review-content {
         left: 16px !important;
         right: auto !important;
-        bottom: 16px !important;
+        bottom: -5px !important;
         top: auto !important;
         z-index: 6 !important;
     }
