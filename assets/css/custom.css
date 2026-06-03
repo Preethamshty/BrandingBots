@@ -499,13 +499,6 @@ html {
     overflow: hidden !important;
 }
 
-/* Hide all non-active slide content so off-screen loop clones never bleed
-   into the viewport regardless of GPU compositing layer behaviour. */
-.testimonial-active .swiper-slide:not(.swiper-slide-active) {
-    visibility: hidden !important;
-    pointer-events: none !important;
-}
-
 /* ============================================================
    Testimonial nav — lives OUTSIDE .testimonial-active so Swiper
    loop clones never contain these buttons, eliminating the
