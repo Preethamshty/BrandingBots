@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/css/aos.css">
     <!-- Main css -->
     <link rel="stylesheet" href="assets/css/main.css?v=20260415-5">
-    <link rel="stylesheet" href="assets/css/custom.css?v=20260604-12">
+    <link rel="stylesheet" href="assets/css/custom.css?v=20260606-14">
 </head>
 
 <body class="home-one-bg tw-magic-cursor">
@@ -41,7 +41,7 @@
 
     <!--==================== Preloader Start ====================-->
     <div class="preloader">
-        <video class="preloader-video" autoplay muted loop playsinline>
+        <video class="preloader-video" autoplay muted loop playsinline webkit-playsinline>
             <source src="assets/videos/Loading_Page.mp4" type="video/mp4">
         </video>
     </div>
@@ -1660,6 +1660,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
+
+    <script>
+    /* Mobile team card — tap to reveal name disc (mirrors desktop hover) */
+    (function () {
+        function initTeamTap() {
+            if (window.innerWidth > 767) return;
+            var cards = document.querySelectorAll('.team-area .team-wrapper');
+            cards.forEach(function (card) {
+                card.addEventListener('click', function () {
+                    var already = this.classList.contains('active');
+                    cards.forEach(function (c) { c.classList.remove('active'); });
+                    if (!already) this.classList.add('active');
+                });
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initTeamTap);
+        } else {
+            initTeamTap();
+        }
+    })();
+    </script>
 
     <!-- Floating WhatsApp Button (Home only) -->
     <a

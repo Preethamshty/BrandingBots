@@ -82,6 +82,23 @@
     opacity: 1;
 }
 
+/* ONEder Wings (brand-img6) & Polar Bear (brand-img8) — show in original
+   colors (not inverted to white) with a subtle white glow for dark-bg contrast */
+.bb-brand-item img[src*="brand-img6"],
+.bb-brand-item img[src*="brand-img8"] {
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.35)) !important;
+    max-height: 68px !important;
+    opacity: 1 !important;
+}
+
+/* Mobile size for same logos */
+@media (max-width: 575px) {
+    .bb-brand-item img[src*="brand-img6"],
+    .bb-brand-item img[src*="brand-img8"] {
+        max-height: 50px !important;
+    }
+}
+
 /* mobile */
 @media (max-width: 575px) {
     .bb-brand-item {
@@ -132,11 +149,11 @@
 /* Mobile */
 @media (max-width: 575px) {
     .cta-area .portfolio-top-subtitle {
-        font-size: 2.5rem !important;
+        font-size: clamp(3rem, 16vw, 4rem) !important;
     }
 
     .cta-area .portfolio-top-title {
-        font-size: 2.5rem !important;
+        font-size: clamp(4.5rem, 25vw, 6rem) !important;
     }
 }
 
@@ -425,6 +442,7 @@ html {
     }
 
     .portfolio-area {
+        padding-block-start: 16px !important;
         padding-block-end: 20px !important;
     }
 
@@ -621,5 +639,228 @@ html {
     .bb-testimonial-nav,
     [class*="text-center"] {
         text-align: center !important;
+    }
+}
+
+/* ============================================================
+   Marquee section — reduce font size and tighten spacing on mobile
+   ============================================================ */
+@media (max-width: 767px) {
+    .maquee-title {
+        font-size: 2.5rem !important;
+    }
+
+    .maquee-area {
+        padding-block: 16px !important;
+    }
+}
+
+
+/* ============================================================
+   team.html — desktop: clip breadcrumb shapes within their section
+   so the 3D character doesn't bleed into the team cards below
+   ============================================================ */
+.breadcrumb-area {
+    overflow: hidden;
+}
+
+/* Desktop: taller cards reveal more of each portrait photo (zoom-out effect) */
+@media (min-width: 768px) {
+    .team-five-wrapper .team-five-thumb {
+        height: 420px !important;
+    }
+}
+
+/* Per-card object-position for best face framing at desktop */
+.col-xl-4:nth-child(1) .team-five-wrapper .team-five-thumb img {
+    object-position: top center !important;
+}
+.col-xl-4:nth-child(2) .team-five-wrapper .team-five-thumb img {
+    object-position: center 15% !important;
+}
+.col-xl-4:nth-child(3) .team-five-wrapper .team-five-thumb img {
+    object-position: top center !important;
+}
+.col-xl-4:nth-child(4) .team-five-wrapper .team-five-thumb img {
+    object-position: top center !important;
+}
+.col-xl-4:nth-child(5) .team-five-wrapper .team-five-thumb img {
+    object-position: top center !important;
+}
+.col-xl-4:nth-child(6) .team-five-wrapper .team-five-thumb img {
+    object-position: top center !important;
+}
+
+/* ============================================================
+   team.html — mobile: consistent professional card for all members
+   ============================================================ */
+@media (max-width: 767px) {
+    /* Uniform card — block layout so image fills edge-to-edge, no background gap */
+    .team-five-wrapper .team-five-thumb {
+        height: 320px !important;
+        border-radius: 20px !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        display: block !important;
+        background: transparent !important;
+    }
+
+    /* Image fills card fully — no gap = no visible border */
+    .team-five-wrapper .team-five-thumb img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: top center !important;
+        transform: none !important;
+        border-radius: 0 !important;
+        display: block !important;
+    }
+
+    /* Harshitha & Bhajan — show more of person by anchoring lower */
+    .col-xl-4:nth-child(2) .team-five-thumb img,
+    .col-xl-4:nth-child(3) .team-five-thumb img {
+        object-position: center center !important;
+    }
+
+    /* Name and role centred below every card */
+    .team-five-wrapper .tw-mt-8,
+    .team-five-wrapper h4,
+    .team-five-wrapper p {
+        text-align: center !important;
+    }
+
+    /* Even spacing between cards */
+    .team-five-wrapper {
+        margin-bottom: 2rem !important;
+    }
+}
+
+/* ============================================================
+   Team section — mobile: keep arch/pill design, tap-to-reveal name disc
+   ============================================================ */
+@media (max-width: 767px) {
+    /* Keep pill/arch shape, reset stagger margin */
+    .team-area .team-wrapper {
+        margin-top: 0 !important;
+        margin-bottom: 1.5rem !important;
+        cursor: pointer;
+    }
+
+    /* Centre disc — override template's off-centre inset-inline-start */
+    .team-area .team-wrap {
+        inset-inline-start: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    /* On tap (.active toggled by JS) — slide disc up, same as desktop hover */
+    .team-area .team-wrapper.active .team-wrap {
+        inset-block-end: -80px !important;
+    }
+
+    /* Flex-centre the name/role inside the circular disc */
+    .team-area .team-content {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    /* Name/role readable inside disc (remove the hover-only translateY push) */
+    .team-area .team-traslate {
+        transform: none !important;
+    }
+
+    /* Centre text inside the disc */
+    .team-area .team-content h4,
+    .team-area .team-content p {
+        text-align: center !important;
+        width: 100% !important;
+    }
+}
+
+/* ============================================================
+   Counter section — mobile: center number + label (layout only, no color change)
+   ============================================================ */
+@media (max-width: 767px) {
+    .counter-area .counter-wrapper,
+    .counter-area .counter-title,
+    .counter-area .counter-wrapper p {
+        text-align: center !important;
+    }
+
+    /* Make label text bigger — numbers (counter-title) are untouched */
+    .counter-area .counter-wrapper p {
+        font-size: 1.25rem !important;
+        line-height: 1.3 !important;
+    }
+}
+
+/* ============================================================
+   Banner — hide decorative arrow shape on mobile only
+   ============================================================ */
+@media (max-width: 767px) {
+    .banner-area .banner-arrow-shape,
+    .banner-area .banner-arrow-shape * {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+
+    /* Hide video section decorative arrow shape on mobile */
+    .video-arrow-shape {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+}
+
+/* ============================================================
+   Comprehensive Mobile Polish
+   ============================================================ */
+
+/* ── 1. Testimonial paragraphs — override fixed 435px width ──── */
+/* tw-w-435-px = 435px; on a 375px phone this overflows 60px     */
+@media (max-width: 767px) {
+    .tw-w-435-px {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* ── 2. Portfolio panels — reduce excessive 666px height ────── */
+/* 666px fills almost the full viewport on a phone               */
+@media (max-width: 767px) {
+    .tw-h-666-px {
+        height: 300px !important;
+    }
+}
+
+/* ── 4. Footer subscribe form — stack vertically on narrow screens */
+@media (max-width: 575px) {
+    /* Email input + button side-by-side is too tight at 375px   */
+    .footer-form {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .footer-form-button .theme-btn-main {
+        width: 100% !important;
+    }
+}
+
+/* ── 5. Service cards — remove inner bottom margin when stacked */
+@media (max-width: 767px) {
+    .service-wrapper {
+        margin-bottom: 0 !important;
+    }
+}
+
+/* ── 6. Banner sitebar — decorative desktop-only strip          */
+@media (max-width: 767px) {
+    .banner-siteber {
+        display: none !important;
     }
 }

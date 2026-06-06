@@ -89,6 +89,26 @@
                 }
             };
 
+            // iOS Safari shows a native play-button overlay on video elements even when
+            // muted + playsinline + autoplay are set. pointer-events:none cannot suppress
+            // it. Fix: on iOS, hide the video entirely and fade out on page load / hard cap.
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+            if (isIOS && preloaderVideo) {
+                preloaderVideo.style.display = "none";
+                preloaderVideo.pause();
+                videoCompleted = true;
+                if (!pageLoaded) {
+                    window.addEventListener("load", () => {
+                        pageLoaded = true;
+                        hidePreloader();
+                    }, { once: true });
+                }
+                setTimeout(() => { pageLoaded = true; videoCompleted = true; hidePreloader(); }, 3000);
+                tryHidePreloader();
+                return;
+            }
+
             if (!pageLoaded) {
                 window.addEventListener("load", () => {
                     pageLoaded = true;
