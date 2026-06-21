@@ -13481,20 +13481,27 @@ body.tw-magic-cursor #magic-cursor {
 
 .contact-left-item .font-heading,
 .contact-left-item .phone-number {
-    white-space: nowrap;
-    word-break: keep-all;
-    overflow-wrap: normal;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    letter-spacing: normal !important;
 }
 
 .contact-left-item .phone-number {
-    display: inline-block;
+    display: inline-block !important;
+    vertical-align: middle;
+}
+
+/* Override utility classes like .d-block which use !important */
+.contact-left-item .phone-number.d-block {
+    display: inline-block !important;
 }
 
 @media screen and (max-width: 575px) {
     .contact-left-item .font-heading,
     .contact-left-item .phone-number {
-        font-size: 1.9rem;
-        white-space: nowrap;
+        font-size: 1.9rem !important;
+        white-space: nowrap !important;
     }
 }
 
