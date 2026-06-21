@@ -106,34 +106,15 @@
                 preloaderVideo.style.display = "none";
                 preloaderVideo.pause();
 
-                // Insert a simple rotating logo fallback if not already present
+                // Insert a lightweight rotating logo fallback if not already present
                 let fallback = preloader.querySelector('.preloader-fallback');
                 if (!fallback) {
                     fallback = document.createElement('div');
                     fallback.className = 'preloader-fallback';
-                    const img = document.createElement('img');
-                    img.src = 'assets/images/logo/logo.png';
-                    img.alt = 'logo';
-                    img.style.width = '140px';
-                    img.style.height = 'auto';
-                    img.style.display = 'block';
-                    img.style.transform = 'rotate(0deg)';
-                    img.style.transition = 'transform 0.25s linear';
-                    fallback.appendChild(img);
-                    // center the fallback in the preloader
-                    fallback.style.display = 'flex';
-                    fallback.style.alignItems = 'center';
-                    fallback.style.justifyContent = 'center';
+                    fallback.innerHTML = `
+                        <img src="assets/images/logo/logo.png" alt="logo" />
+                    `;
                     preloader.appendChild(fallback);
-
-                    // Animate rotation with requestAnimationFrame until preloader hides
-                    let angle = 0;
-                    const rotate = () => {
-                        angle = (angle + 6) % 360;
-                        img.style.transform = `rotate(${angle}deg)`;
-                        if (!isPreloaderHidden) requestAnimationFrame(rotate);
-                    };
-                    requestAnimationFrame(rotate);
                 }
 
                 videoCompleted = true;

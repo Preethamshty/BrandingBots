@@ -9309,6 +9309,32 @@ input:focus, input:focus-visible {
     display: block;
 }
 
+.preloader-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.preloader-fallback img {
+    width: 140px;
+    max-width: 45vw;
+    height: auto;
+    display: block;
+    animation: preloader-fallback-spin 1.2s linear infinite;
+}
+
+@keyframes preloader-fallback-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* Safety net: never show legacy preloader elements */
 .preloader svg,
 .preloader .preloader-heading,
@@ -13450,6 +13476,19 @@ body.tw-magic-cursor #magic-cursor {
 @media screen and (max-width: 575px) {
     .contact-five-shape-2 {
         display: none;
+    }
+}
+
+.contact-left-item .font-heading {
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: normal;
+}
+
+@media screen and (max-width: 575px) {
+    .contact-left-item .font-heading {
+        font-size: 1.9rem;
+        white-space: nowrap;
     }
 }
 
