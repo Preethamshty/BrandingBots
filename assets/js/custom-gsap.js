@@ -29,6 +29,9 @@ var tl = gsap.timeline();
 gsap.registerPlugin(ScrollTrigger, SplitText);
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
+// Detect iOS devices to reduce or disable heavy animations that cause jank on Safari
+const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
 
 ////////////////////////////////////////////////////
 // 01. Section title Animation Js
@@ -219,6 +222,11 @@ let otherSections = document.querySelectorAll('.portfolio-panel');
 const portfolioMatch = gsap.matchMedia();
 
 function initPortfolioPanels(startPoint, endPoint, scrubAmount) {
+    // On iOS devices, avoid the pinned/scrubbed panel scaling animations to prevent jank.
+    if (isIOSDevice) {
+        gsap.set(otherSections, { scale: 1 });
+        return;
+    }
     gsap.set(otherSections, { scale: 1 });
     otherSections.forEach((section) => {
         tl.to(section, {
