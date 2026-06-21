@@ -224,6 +224,28 @@ html {
     display: block;
 }
 
+/* Fallback logo and canvas sizing (iOS) */
+.preloader .preloader-fallback,
+.preloader .preloader-fallback-canvas {
+    display: block;
+    margin: 0 auto;
+    width: min(100vw, 1000px);
+    max-height: 100vh;
+}
+
+.preloader .preloader-fallback img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Ensure fallback image isn't forced to a tiny fixed width by other styles */
+.preloader .preloader-fallback img {
+    max-width: 60vw !important;
+    width: auto !important;
+}
+
 /* About section — mobile: hide image, arrow, tagline text and ball */
 @media (max-width: 767px) {
     .about-area .about-bg,

@@ -111,8 +111,10 @@
                 if (!canvas) {
                     canvas = document.createElement('canvas');
                     canvas.className = canvasClass;
-                    canvas.style.width = '100%';
-                    canvas.style.height = '100%';
+                    // match video sizing rules: constrain width, let height scale to preserve aspect
+                    canvas.style.width = 'min(100vw, 1000px)';
+                    canvas.style.height = 'auto';
+                    canvas.style.maxHeight = '100vh';
                     canvas.style.display = 'block';
                     preloader.appendChild(canvas);
                 }
