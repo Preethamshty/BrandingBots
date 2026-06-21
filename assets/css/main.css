@@ -13479,14 +13479,20 @@ body.tw-magic-cursor #magic-cursor {
     }
 }
 
-.contact-left-item .font-heading {
+.contact-left-item .font-heading,
+.contact-left-item .phone-number {
     white-space: nowrap;
     word-break: keep-all;
     overflow-wrap: normal;
 }
 
+.contact-left-item .phone-number {
+    display: inline-block;
+}
+
 @media screen and (max-width: 575px) {
-    .contact-left-item .font-heading {
+    .contact-left-item .font-heading,
+    .contact-left-item .phone-number {
         font-size: 1.9rem;
         white-space: nowrap;
     }
