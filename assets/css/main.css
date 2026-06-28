@@ -13479,29 +13479,25 @@ body.tw-magic-cursor #magic-cursor {
     }
 }
 
-.contact-left-item .font-heading,
-.contact-left-item .phone-number {
-    white-space: nowrap !important;
-    word-break: keep-all !important;
-    overflow-wrap: normal !important;
+.contact-left-item .font-heading {
     letter-spacing: normal !important;
 }
 
 .contact-left-item .phone-number {
-    display: inline-block !important;
-    vertical-align: middle;
-}
-
-/* Override utility classes like .d-block which use !important */
-.contact-left-item .phone-number.d-block {
-    display: inline-block !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    display: block !important;
 }
 
 @media screen and (max-width: 575px) {
-    .contact-left-item .font-heading,
+    .contact-left-item .font-heading {
+        font-size: 1.9rem !important;
+    }
+
     .contact-left-item .phone-number {
         font-size: 1.9rem !important;
-        white-space: nowrap !important;
+        white-space: normal !important;
     }
 }
 
