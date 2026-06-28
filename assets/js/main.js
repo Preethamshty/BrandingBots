@@ -192,14 +192,7 @@
                 const scheduleTry = () => {
                     setTimeout(() => {
                         if (!tryDrawOnce()) {
-                            // show fallback image with fade
-                            if (fallback) {
-                                fallback.style.display = 'flex';
-                                if (!fallback.style.transition) fallback.style.transition = 'opacity 0.6s ease';
-                                // ensure starting from 0 so fade works
-                                fallback.style.opacity = '0';
-                                setTimeout(() => { try { fallback.style.opacity = '1'; } catch(e){} }, 20);
-                            }
+                            // Do not reveal the fallback branding image — simply continue
                             videoCompleted = true;
                             tryHidePreloader();
                         }
@@ -208,11 +201,7 @@
 
                 if (playPromise && typeof playPromise.then === 'function') {
                     playPromise.then(() => scheduleTry()).catch(() => {
-                        if (fallback) {
-                            fallback.style.display = 'flex';
-                            if (!fallback.style.transition) fallback.style.transition = 'opacity 0.6s ease';
-                            fallback.style.opacity = '1';
-                        }
+                        // Autoplay blocked or play() failed — do not show fallback branding image.
                         videoCompleted = true;
                         tryHidePreloader();
                     });
