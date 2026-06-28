@@ -51,7 +51,7 @@
             preloader.style.justifyContent = "center";
             preloader.style.opacity = "1";
             preloader.style.visibility = "visible";
-            preloader.style.transition = "opacity 0.45s ease, visibility 0.45s ease";
+            preloader.style.transition = "opacity 0.9s ease, visibility 0.9s ease";
 
             const preloaderVideo = preloader.querySelector(".preloader-video");
             if (preloaderVideo) {
@@ -60,6 +60,16 @@
                 preloaderVideo.style.objectFit = "cover";
                 preloaderVideo.style.display = "block";
                 preloaderVideo.style.pointerEvents = "none";
+            }
+
+            let fallback = preloader.querySelector('.preloader-fallback');
+            if (!fallback) {
+                fallback = document.createElement('div');
+                fallback.className = 'preloader-fallback';
+                fallback.style.display = 'none';
+                fallback.style.pointerEvents = 'none';
+                fallback.innerHTML = '<img src="assets/images/logo/logo.png" alt="logo" />';
+                preloader.appendChild(fallback);
             }
 
             return preloader;
@@ -73,12 +83,22 @@
             document.documentElement.classList.add("preloader-active");
             document.body.style.overflow = "hidden";
 
+            // Ensure the preloader remains visible for a short, minimum duration
+            const MIN_PRELOADER_MS = 1800; // minimum time to show preloader (ms)
+            let preloaderShownAt = performance.now();
+
             let isPreloaderHidden = false;
             let pageLoaded = document.readyState === "complete";
             let videoCompleted = !preloaderVideo;
 
             let hidePreloader = () => {
                 if (isPreloaderHidden) return;
+                const elapsed = performance.now() - preloaderShownAt;
+                if (elapsed < MIN_PRELOADER_MS) {
+                    // schedule to hide after minimum display time
+                    setTimeout(hidePreloader, Math.ceil(MIN_PRELOADER_MS - elapsed));
+                    return;
+                }
                 isPreloaderHidden = true;
                 preloader.style.opacity = "0";
                 preloader.style.visibility = "hidden";
@@ -87,7 +107,7 @@
                     preloader.style.zIndex = "-1";
                     document.documentElement.classList.remove("preloader-active");
                     document.body.style.overflow = "";
-                }, 500);
+                }, 700);
             };
 
             const tryHidePreloader = () => {
@@ -97,6 +117,7 @@
             };
 
             if (isIOSDevice && preloaderVideo) {
+                // Ensure inline playback hints are present
                 preloaderVideo.setAttribute('playsinline', '');
                 preloaderVideo.setAttribute('webkit-playsinline', '');
                 preloaderVideo.setAttribute('muted', '');
@@ -111,10 +132,93 @@
                 preloaderVideo.style.objectFit = 'cover';
                 preloaderVideo.style.pointerEvents = 'none';
 
-                preloaderVideo.addEventListener('playing', () => {
-                    videoCompleted = true;
-                    tryHidePreloader();
-                }, { once: true });
+                // Create canvas overlay to draw first frame (works around native overlays on some iOS models)
+                const canvasClass = 'preloader-fallback-canvas';
+                let canvas = preloader.querySelector('.' + canvasClass);
+                if (!canvas) {
+                    canvas = document.createElement('canvas');
+                    canvas.className = canvasClass;
+                    canvas.style.display = 'none';
+                    canvas.style.opacity = '0';
+                    canvas.style.transition = 'opacity 0.6s ease';
+                    canvas.style.width = 'min(80vw, 420px)';
+                    canvas.style.height = 'auto';
+                    canvas.style.maxHeight = '100vh';
+                    canvas.style.zIndex = 11;
+                    preloader.appendChild(canvas);
+                }
+
+                const ctx = canvas.getContext && canvas.getContext('2d');
+
+                // image fallback element (already created by ensureVideoPreloader)
+                const fallback = preloader.querySelector('.preloader-fallback');
+
+                // Try to play and draw a frame — if drawing succeeds we show canvas, otherwise show image fallback
+                const tryDrawOnce = () => {
+                    if (!ctx) return false;
+                    try {
+                        const rect = preloader.getBoundingClientRect();
+                        const dpr = window.devicePixelRatio || 1;
+                        const w = Math.max(1, Math.floor(Math.min(rect.width, window.innerWidth) * dpr));
+                        const h = Math.max(1, Math.floor(Math.min(rect.height, window.innerHeight) * dpr));
+                        canvas.width = w;
+                        canvas.height = h;
+                        ctx.drawImage(preloaderVideo, 0, 0, w, h);
+                        // sample a pixel to ensure video frame drew
+                        const data = ctx.getImageData(Math.floor(w / 2), Math.floor(h / 2), 1, 1).data;
+                        const visible = (data[0] + data[1] + data[2] + data[3]) > 0;
+                        if (visible) {
+                            canvas.style.display = 'block';
+                            // fade in canvas
+                            setTimeout(() => { try { canvas.style.opacity = '1'; } catch(e){} }, 20);
+                            if (fallback) {
+                                fallback.style.opacity = '0';
+                                // hide fallback after fade
+                                setTimeout(() => { try { fallback.style.display = 'none'; } catch(e){} }, 220);
+                            }
+                            videoCompleted = true;
+                            tryHidePreloader();
+                            return true;
+                        }
+                    } catch (e) {
+                        // drawing may throw if video not allowed; ignore
+                    }
+                    return false;
+                };
+
+                // Attempt to play and draw after short delay
+                const playPromise = preloaderVideo.play();
+                // Give video a bit more time to present animation before falling back
+                const scheduleTry = () => {
+                    setTimeout(() => {
+                        if (!tryDrawOnce()) {
+                            // show fallback image with fade
+                            if (fallback) {
+                                fallback.style.display = 'flex';
+                                if (!fallback.style.transition) fallback.style.transition = 'opacity 0.6s ease';
+                                // ensure starting from 0 so fade works
+                                fallback.style.opacity = '0';
+                                setTimeout(() => { try { fallback.style.opacity = '1'; } catch(e){} }, 20);
+                            }
+                            videoCompleted = true;
+                            tryHidePreloader();
+                        }
+                    }, 1000);
+                };
+
+                if (playPromise && typeof playPromise.then === 'function') {
+                    playPromise.then(() => scheduleTry()).catch(() => {
+                        if (fallback) {
+                            fallback.style.display = 'flex';
+                            if (!fallback.style.transition) fallback.style.transition = 'opacity 0.6s ease';
+                            fallback.style.opacity = '1';
+                        }
+                        videoCompleted = true;
+                        tryHidePreloader();
+                    });
+                } else {
+                    scheduleTry();
+                }
             }
 
             if (!pageLoaded) {

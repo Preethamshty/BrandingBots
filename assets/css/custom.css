@@ -237,10 +237,24 @@ html {
 /* Fallback logo and canvas sizing (iOS) */
 .preloader .preloader-fallback,
 .preloader .preloader-fallback-canvas {
-    display: block;
-    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: min(80vw, 420px);
     max-height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.preloader .preloader-fallback {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.preloader .preloader-fallback-canvas {
+    opacity: 0;
+    transition: opacity 0.6s ease;
 }
 
 .preloader .preloader-fallback img {
@@ -249,6 +263,12 @@ html {
     max-width: 80vw !important;
     height: auto !important;
     object-fit: contain;
+}
+
+/* Override rotation applied in main.css: disable spinning of fallback logo */
+.preloader .preloader-fallback img {
+    animation: none !important;
+    transform: none !important;
 }
 
 /* About section — mobile: hide image, arrow, tagline text and ball */
